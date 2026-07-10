@@ -6,14 +6,13 @@ A working front-end prototype of a three-sided onboarding tool, built against so
 
 | Path | What it is |
 |---|---|
-| `prototype/` | Exportable Next.js 15 + React 19 + TypeScript app (the live prototype) |
+| `app/`, `components/`, `lib/` | The Next.js 15 + React 19 + TypeScript app (the live prototype, at repo root) |
 | `build-log.md` | Scoping Q&A (self-answered in character), design decisions traced to sourced pain points, break-it pass, done-check |
 | `data-schema-brief.md` | What a real ATS/HRIS integration would need — entities, sync direction, auth, notifications, and what the prototype honestly can't do |
 
 ## Run the live prototype
 
 ```bash
-cd prototype
 npm install
 npm run dev
 # → http://localhost:3789
@@ -23,10 +22,12 @@ npm run dev
 
 ## Deploy to Vercel
 
-The app is deployment-ready — standard Next.js 15, no env vars, no backend, all routes prerender statically. Two options:
+The app is deployment-ready — standard Next.js 15, no env vars required, no backend, all routes prerender statically. The app lives at the repo root, so no Root Directory override is needed. Two options:
 
-- **CLI:** `cd prototype && npx vercel` (then `npx vercel --prod`). The CLI deploys the current folder, so no extra config is needed.
-- **Git import:** import the repo in the Vercel dashboard and set **Root Directory** to `projects/onboarding-hr-agent/run-1/prototype` — the app is nested, and without this Vercel will try to build the repo root. Framework preset auto-detects as Next.js; leave build settings default.
+- **CLI:** `npx vercel` from the repo root (then `npx vercel --prod`).
+- **Git import:** import the repo in the Vercel dashboard as-is. Framework preset auto-detects as Next.js; leave build settings default.
+
+`.env.local` (a Vercel CLI artifact with a short-lived OIDC token) and `.vercel/` are gitignored — don't commit them; Vercel regenerates both on demand.
 
 After the first deployment, enable **Speed Insights** for the project in the Vercel dashboard (Project → Speed Insights) — the `<SpeedInsights/>` component is already mounted and starts reporting as soon as it's enabled.
 
