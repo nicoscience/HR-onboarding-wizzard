@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ChatPanel } from '@/components/chat-panel';
 import { HireChecklist } from '@/components/checklist';
 import { CheckpointStrip } from '@/components/checkpoints';
-import { ProgressBar, Section } from '@/components/ui';
+import { ClientGate, ProgressBar, Section } from '@/components/ui';
 import { hireStatus } from '@/lib/engine';
 import { useStore } from '@/lib/store';
 
@@ -17,7 +17,7 @@ export default function NewHirePage() {
   const dueCheckpoint = status.checkpoints.find((c) => c.status === 'due');
 
   return (
-    <div>
+    <ClientGate>
       <div className="viewing-as">
         <span>
           <strong>Viewing as new hire</strong> (demo role switcher — no real logins in this prototype):
@@ -65,6 +65,6 @@ export default function NewHirePage() {
           </Section>
         </div>
       </div>
-    </div>
+    </ClientGate>
   );
 }

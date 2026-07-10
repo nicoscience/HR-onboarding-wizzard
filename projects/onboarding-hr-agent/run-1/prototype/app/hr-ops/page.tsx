@@ -7,7 +7,7 @@
 import React, { useState } from 'react';
 import { CheckpointStrip } from '@/components/checkpoints';
 import { TemplateEditor } from '@/components/template-editor';
-import { GroupTag, HealthBadge, ProgressBar, Section } from '@/components/ui';
+import { ClientGate, GroupTag, HealthBadge, ProgressBar, Section } from '@/components/ui';
 import { hireStatus } from '@/lib/engine';
 import { useStore } from '@/lib/store';
 import { ALL_PEOPLE_GROUPS, CompanyInfo, PEOPLE_GROUP_LABELS } from '@/lib/types';
@@ -166,7 +166,7 @@ export default function HrOpsPage() {
     { id: 'checklist', label: '📋 Checklist settings' },
   ];
   return (
-    <div>
+    <ClientGate>
       <div className="page-head">
         <h1>HR Ops</h1>
         <p className="muted">
@@ -194,6 +194,6 @@ export default function HrOpsPage() {
           <TemplateEditor />
         </Section>
       )}
-    </div>
+    </ClientGate>
   );
 }

@@ -21,6 +21,17 @@ npm run dev
 
 `npm run build && npm start` for a production build. `<SpeedInsights/>` (`@vercel/speed-insights/next`) is mounted in `app/layout.tsx`; it no-ops locally and activates if the app is ever deployed on Vercel.
 
+## Deploy to Vercel
+
+The app is deployment-ready — standard Next.js 15, no env vars, no backend, all routes prerender statically. Two options:
+
+- **CLI:** `cd prototype && npx vercel` (then `npx vercel --prod`). The CLI deploys the current folder, so no extra config is needed.
+- **Git import:** import the repo in the Vercel dashboard and set **Root Directory** to `projects/onboarding-hr-agent/run-1/prototype` — the app is nested, and without this Vercel will try to build the repo root. Framework preset auto-detects as Next.js; leave build settings default.
+
+After the first deployment, enable **Speed Insights** for the project in the Vercel dashboard (Project → Speed Insights) — the `<SpeedInsights/>` component is already mounted and starts reporting as soon as it's enabled.
+
+Deployment note: the three views render client-side only (`ClientGate`) because all demo state derives from "days since start date" relative to the viewer's current date — baking it into build-time HTML would go stale and cause hydration mismatches. The brief prerendered fallback ("Loading demo data…") is expected.
+
 ## The three views
 
 - **`/new-hire`** — interactive checklist (timing, duration, people involved with a four-group filter, action items, deliverables), feedback check-ins at Week 1 / Day 30 / 60 / 90, and a chat panel grounded only in HR-configured content with a permanently visible **Talk to a human** escalation.

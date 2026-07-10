@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 import { CheckpointStrip } from '@/components/checkpoints';
-import { HealthBadge, ProgressBar, Section } from '@/components/ui';
+import { ClientGate, HealthBadge, ProgressBar, Section } from '@/components/ui';
 import { formatDayOffset, formatDuration, hireStatus, tasksOwnedBy } from '@/lib/engine';
 import { useStore } from '@/lib/store';
 import { Hire, Task } from '@/lib/types';
@@ -58,7 +58,7 @@ export default function ManagerPage() {
   );
 
   return (
-    <div>
+    <ClientGate>
       <div className="viewing-as">
         <span><strong>Viewing as hiring manager</strong> (demo role switcher):</span>
         <select value={manager.id} onChange={(e) => setManagerId(e.target.value)} aria-label="Choose which manager to view as">
@@ -143,6 +143,6 @@ export default function ManagerPage() {
           </Section>
         );
       })}
-    </div>
+    </ClientGate>
   );
 }

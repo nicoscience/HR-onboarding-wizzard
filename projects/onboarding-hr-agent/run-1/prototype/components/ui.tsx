@@ -1,8 +1,22 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { healthLabel } from '@/lib/engine';
 import { ALL_PEOPLE_GROUPS, HireHealth, PEOPLE_GROUP_LABELS, PeopleGroup } from '@/lib/types';
+
+/**
+ * Renders children only after mount. The three views derive state from
+ * "days since start date" — computed against the current date — so their
+ * markup must not be baked in at build time: statically prerendered HTML
+ * from an earlier day would mismatch the client render on hydration.
+ * The server/prerender pass emits the fallback instead.
+ */
+export function ClientGate({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <p className="muted">Loading demo data…</p>;
+  return <>{children}</>;
+}
 
 export function ProgressBar({ done, total }: { done: number; total: number }) {
   const pct = total === 0 ? 0 : Math.round((done / total) * 100);
