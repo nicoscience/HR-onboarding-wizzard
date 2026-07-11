@@ -1,8 +1,8 @@
-# Onboarding HR Agent — run-1
+# Onboarding HR Agent
 
 A working front-end prototype of a three-sided onboarding tool, built against sourced 2025–2026 onboarding failure data (see `master-prompt.md` at the repo root for the sources, and `build-log.md` here for the feature-to-pain-point mapping).
 
-**Live demo:** https://hr-onboarding-b93kycaik-nicosciences-projects.vercel.app
+**Live demo:** https://hr-onboarding-wizzard.vercel.app
 
 ## 2-minute demo walkthrough
 
@@ -74,6 +74,14 @@ Everything in this repository, however, is an independent build made afterward. 
 
 Goal prompt given to Claude:
 
-Build a working prototype of an Onboarding HR Agent with three views: (1) New Hire, an interactive checklist plus a chat panel for questions, with an escalate-to-a-human option always visible; (2) Hiring Manager, tasks assigned to them, visibility into their new hire's progress, and reminders, since actively-involved managers produce far better onboarding outcomes; (3) HR Ops, company info, key contacts, checklist settings, and a simple dashboard showing which new hires are behind schedule or flagged as at-risk of early attrition. Checklist tasks need timing, duration, people involved (grouped into Team/Department Lead, HR Team, IT, Office Admin, with a filter), action items, and deliverables; must be reorderable, editable in place, and insertable between existing steps. Build in short feedback checkpoints at key milestones (e.g. week 1, day 30, day 60, day 90) so new hires always have a chance to report how it's going. Ship a live prototype, exportable front-end code, and a short data-schema brief describing exactly what a real ATS/HRIS integration would need; do not build actual backend auth, persistence, or integration.
+```bash
+Build a working prototype of an Onboarding HR Agent with three views: 
+(1) New Hire, an interactive checklist plus a chat panel for questions, with an escalate-to-a-human option always visible; 
+(2) Hiring Manager, tasks assigned to them, visibility into their new hire's progress, and reminders, since actively-involved managers produce far better onboarding outcomes; 
+(3) HR Ops, company info, key contacts, checklist settings, and a simple dashboard showing which new hires are behind schedule or flagged as at-risk of early attrition. 
+Checklist tasks need timing, duration, people involved (grouped into Team/Department Lead, HR Team, IT, Office Admin, with a filter), action items, and deliverables; 
+must be reorderable, editable in place, and insertable between existing steps. Build in short feedback checkpoints at key milestones (e.g. week 1, day 30, day 60, day 90) so new hires always have a chance to report how it's going. 
+Ship a live prototype, exportable front-end code, and a short data-schema brief describing exactly what a real ATS/HRIS integration would need; do not build actual backend auth, persistence, or integration.
+```
 
 See `master-prompt.md` for the full sourced-research brief this prompt was built on, and `build-log.md` for how it was scoped and executed.
